@@ -14,4 +14,28 @@ FROM
     then 1 else 0 end as is_radiant_gold_adv_win
 from matches
 where game_mode = 2 and start_time >= 1630425600) tznb
-   
+
+MATCH_COUNT RADIANT_WIN RADIANT_GOLD_ADV_10_MIN_WIN_MATCH_COUNT
+   2330	        1257	                  825
+825/1257=65.63%
+
+SELECT
+    count(match_id) as match_count,
+    sum(is_dire_win) as dire_win,
+    sum(is_dire_gold_adv_win) as dire_gold_adv_10_min_win_match_count
+FROM
+(SELECT
+    match_id,
+    radiant_win,
+    case when (radiant_win is false)
+    then 1 else 0 end as is_dire_win,
+    game_mode,
+    radiant_gold_adv[11] as radiant_gold_adv_10,
+    case when (radiant_gold_adv[11] < 0 and radiant_win is false)
+    then 1 else 0 end as is_dire_gold_adv_win
+from matches
+where game_mode = 2 and start_time >= 1630425600) tznb
+
+MATCH_COUNT DIRE_WIN DIRE_GOLD_ADV_10_MIN_WIN_MATCH_COUNT
+    2330	 1073	                698
+698/1073=65.05%
