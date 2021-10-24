@@ -19,6 +19,9 @@ MATCH_COUNT RADIANT_WIN RADIANT_GOLD_ADV_10_MIN_WIN_MATCH_COUNT
    2330	        1257	                  825
 825/1257=65.63%
 
+chi squared test calculor done https://www.statskingdom.com/310GoodnessChi.html
+confidence interval done https://www.statskingdom.com/41_proportion_confidence_interval.html
+
 SELECT
     count(match_id) as match_count,
     sum(is_dire_win) as dire_win,
@@ -39,3 +42,6 @@ where game_mode = 2 and start_time >= 1630425600) tznb
 MATCH_COUNT DIRE_WIN DIRE_GOLD_ADV_10_MIN_WIN_MATCH_COUNT
     2330	 1073	                698
 698/1073=65.05%
+
+chi squared test calculor done https://www.statskingdom.com/310GoodnessChi.html
+confidence interval done https://www.statskingdom.com/41_proportion_confidence_interval.html
