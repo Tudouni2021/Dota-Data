@@ -1,0 +1,17 @@
+SELECT
+    count(match_id) as match_count,
+    sum(is_radiant_win) as Radiant_win,
+    sum(is_radiant_gold_adv_win) as Radiant_gold_adv_10_min_win_match_count
+FROM
+(SELECT
+    match_id,
+    radiant_win,
+    case when (radiant_win is true)
+    then 1 else 0 end as is_radiant_win,
+    game_mode,
+    radiant_gold_adv[11] as radiant_gold_adv_10,
+    case when (radiant_gold_adv[11] >0 and radiant_win is true)
+    then 1 else 0 end as is_radiant_gold_adv_win
+from matches
+where game_mode = 2 and start_time >= 1630425600) tznb
+   
